@@ -1,62 +1,263 @@
-<!doctype html>
-
-<!-- this is a comment for human! -->
-
+<!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yugandhar Jarugulla – Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:      #1a1a2e;
+      --mid:      #4a4a6a;
+      --muted:    #8888aa;
+      --accent:   #5b5ef4;
+      --accent2:  #00c9a7;
+      --bg:       #f7f7fb;
+      --card:     #ffffff;
+      --border:   #e2e2ee;
+      --tag-bg:   #eeeeff;
+      --tag-text: #4040cc;
+      --font:     'Space Grotesk', sans-serif;
+      --mono:     'DM Mono', monospace;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--ink); min-height: 100vh; padding: 40px 20px; }
+    .page { max-width: 860px; margin: 0 auto; background: var(--card); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 40px rgba(91,94,244,0.10); }
 
-  <header>
-    <title>Harrison Kong's Resume</title>
-    <link rel="stylesheet" href="css/master.css">
-    <link rel="FaviconIcon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="name" content="Harrison Kong's Resume">
-    <!-- remove the following line after you are happy with your Website
-         so that search engines will index it! -->
-    <meta name="robots" content="noindex, nofollow">
-  </header>
+    /* HEADER */
+    .header { background: var(--ink); padding: 48px 52px 40px; position: relative; overflow: hidden; }
+    .header::before { content:''; position:absolute; top:-60px; right:-60px; width:260px; height:260px; border-radius:50%; background:radial-gradient(circle,rgba(91,94,244,0.35) 0%,transparent 70%); }
+    .header::after  { content:''; position:absolute; bottom:-40px; left:140px; width:160px; height:160px; border-radius:50%; background:radial-gradient(circle,rgba(0,201,167,0.25) 0%,transparent 70%); }
+    .header-top { display:flex; align-items:flex-start; justify-content:space-between; gap:24px; flex-wrap:wrap; position:relative; z-index:1; }
+    .name { font-size:clamp(28px,5vw,42px); font-weight:700; color:#fff; letter-spacing:-0.5px; line-height:1.1; }
+    .name span { color:var(--accent2); }
+    .role-badge { margin-top:10px; display:inline-block; font-family:var(--mono); font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--accent2); border:1px solid rgba(0,201,167,0.4); border-radius:4px; padding:4px 10px; }
+    .contact-grid { display:flex; flex-direction:column; gap:8px; align-items:flex-end; }
+    .contact-item { font-size:13px; color:rgba(255,255,255,0.75); display:flex; align-items:center; gap:6px; }
+    .contact-item a { color:rgba(255,255,255,0.75); text-decoration:none; }
+    .contact-item a:hover { color:var(--accent2); }
+    .contact-item .dot { width:6px; height:6px; border-radius:50%; background:var(--accent2); flex-shrink:0; }
+    .objective { margin-top:28px; position:relative; z-index:1; font-size:14px; line-height:1.7; color:rgba(255,255,255,0.70); max-width:620px; border-left:2px solid var(--accent2); padding-left:16px; }
 
-  <body>
-    <hr>
+    /* BODY */
+    .body { display:grid; grid-template-columns:1fr 260px; }
 
-    <img src="images/headshot.jpg" alt="Harrison Kong's headshot" width="20%">
+    /* MAIN */
+    .main { padding:40px 44px 44px 52px; }
+    .section { margin-bottom:36px; }
+    .section:last-child { margin-bottom:0; }
+    .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--accent); margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+    .section-label::after { content:''; flex:1; height:1px; background:var(--border); }
 
-    <h1>Harrison Kong</h1>
-    <h4>Senior UX, Mobile App, Website Software Engineer</h4>
+    /* Education */
+    .edu-item { margin-bottom:20px; }
+    .edu-item:last-child { margin-bottom:0; }
+    .edu-degree { font-size:15px; font-weight:600; color:var(--ink); }
+    .edu-school { font-size:13px; color:var(--mid); margin-top:2px; }
+    .edu-meta { margin-top:6px; display:flex; gap:12px; flex-wrap:wrap; }
+    .badge { font-family:var(--mono); font-size:11px; padding:3px 8px; border-radius:4px; background:var(--tag-bg); color:var(--tag-text); }
+    .badge.green { background:#e6faf6; color:#007a60; }
 
-    <p>Email: <a href="mailto:harrisonkong@skyroute66.com" target="_blank">harrisonkong@skyroute66.com</a></p>
-    <!-- don't post physical address, personal phone number or other personal information on the web! -->
+    /* Project */
+    .project-card { background:var(--bg); border-radius:10px; padding:20px 22px; border:1px solid var(--border); }
+    .project-title { font-size:16px; font-weight:700; color:var(--ink); }
+    .project-role { font-size:12px; font-family:var(--mono); color:var(--accent); margin-top:4px; }
+    .project-desc { margin-top:14px; display:flex; flex-direction:column; gap:8px; }
+    .project-line { font-size:13px; color:var(--mid); line-height:1.6; padding-left:14px; position:relative; }
+    .project-line::before { content:'▸'; position:absolute; left:0; color:var(--accent2); font-size:11px; top:2px; }
+    .skill-tags { margin-top:14px; display:flex; flex-wrap:wrap; gap:6px; }
+    .skill-tag { font-size:11px; font-family:var(--mono); padding:3px 9px; border-radius:20px; background:var(--tag-bg); color:var(--tag-text); border:1px solid rgba(91,94,244,0.2); }
 
-    <h2>Portfolio</h2>
-      <h3>GitHub: <a href="https://github.com/harrisonkong" target="_blank">https://github.com/harrisonkong</a></h3>
+    /* Certifications */
+    .cert-list { display:flex; flex-direction:column; gap:10px; }
+    .cert-item { display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--mid); line-height:1.5; }
+    .cert-bullet { width:18px; height:18px; border-radius:4px; background:var(--tag-bg); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:9px; color:var(--accent); font-family:var(--mono); margin-top:1px; }
 
-    <h2>Education</h2>
+    /* SIDEBAR */
+    .sidebar { background:var(--bg); border-left:1px solid var(--border); padding:40px 28px; }
+    .side-section { margin-bottom:32px; }
+    .side-section:last-child { margin-bottom:0; }
+    .side-label { font-family:var(--mono); font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
 
-    <h3>University of Massachusetts, Boston</h3>
-    <h4>B.S. Computer Science, GPA 3.88</h4>
+    /* Tech Skills */
+    .tech-row { margin-bottom:14px; }
+    .tech-category { font-size:11px; font-family:var(--mono); color:var(--muted); margin-bottom:6px; text-transform:uppercase; letter-spacing:1px; }
+    .tech-pills { display:flex; flex-wrap:wrap; gap:5px; }
+    .tech-pill { font-size:12px; font-weight:500; padding:4px 10px; border-radius:6px; background:var(--card); color:var(--ink); border:1px solid var(--border); }
 
-    <h2>Professional Experiences</h2>
+    /* Languages */
+    .lang-item { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; font-size:13px; }
+    .lang-name { color:var(--ink); font-weight:500; }
+    .lang-level { font-size:11px; font-family:var(--mono); color:var(--muted); }
+    .lang-bar { width:100%; height:3px; background:var(--border); border-radius:2px; margin-top:4px; margin-bottom:12px; }
+    .lang-fill { height:100%; border-radius:2px; background:linear-gradient(90deg,var(--accent),var(--accent2)); }
 
-    <h3>Subject Matter Expert / Online Instructor</h3>
-    <h4>Coursera, Mountain View, CA</h4>
-    <h5>March 2020 - Present</h5>
-      <ul>
-        <li>Create interactive online IT courses</li>
-        <li>Teach students worldwide</li>
-      </ul>
+    /* Interests */
+    .interest-item { font-size:13px; color:var(--mid); padding:7px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:8px; }
+    .interest-item:last-child { border-bottom:none; }
+    .interest-icon { font-size:15px; }
 
-    <h3>Founder, Software Engineer</h3>
-    <h4>skyRoute66, Los Angeles, CA</h4>
-    <h5>January 2019 - Present</h5>
-      <ul>
-        <li>Author and publish mobile apps, reusable iOS UI modules</li>
-        <li>Independent computer service contractor</li>
-      </ul>
-  </body>
+    /* Soft Skills */
+    .soft-item { font-size:13px; color:var(--mid); line-height:1.5; margin-bottom:10px; padding-left:12px; position:relative; }
+    .soft-item::before { content:''; position:absolute; left:0; top:7px; width:5px; height:5px; border-radius:50%; background:var(--accent); }
 
-  <footer>
-  <hr>
-  <p><a href="index.html">Back to my portal</a><p>
-  </footer>
+    /* FOOTER */
+    .footer { background:var(--ink); text-align:center; padding:14px; font-family:var(--mono); font-size:11px; color:rgba(255,255,255,0.3); letter-spacing:1px; }
 
+    @media (max-width:640px) {
+      .body { grid-template-columns:1fr; }
+      .sidebar { border-left:none; border-top:1px solid var(--border); }
+      .main { padding:32px 24px; }
+      .header { padding:36px 24px 32px; }
+      .contact-grid { align-items:flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <div class="name">Yugan<span>dhar</span> Jarugulla</div>
+        <div class="role-badge">CS Graduate · Aspiring Developer</div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-item"><span class="dot"></span> +91 73825 66637</div>
+        <div class="contact-item"><span class="dot"></span><a href="mailto:yugandharjarugulla2007@gmail.com">yugandharjarugulla2007@gmail.com</a></div>
+        <div class="contact-item"><span class="dot"></span><a href="https://www.linkedin.com/in/yugandharjarugulla" target="_blank">linkedin.com/in/yugandharjarugulla</a></div>
+        <div class="contact-item"><span class="dot"></span> Amadalavalasa, Srikakulam, AP</div>
+      </div>
+    </div>
+    <div class="objective">
+      Enthusiastic Computer Science graduate with strong problem-solving skills seeking an entry-level Software Employee role to prove my knowledge, while contributing to tech-driven projects.
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="main">
+
+      <div class="section">
+        <div class="section-label">Education</div>
+        <div class="edu-item">
+          <div class="edu-degree">B.Sc. in Computer Science</div>
+          <div class="edu-school">Sri Aditya Degree College, Srikakulam – Kakinada</div>
+          <div class="edu-meta">
+            <span class="badge">CGPA 7.65 / 10</span>
+            <span class="badge green">Pursuing · 3rd Year</span>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">Intermediate – M.P.C.</div>
+          <div class="edu-school">Chakradhar Junior College, Srikakulam</div>
+          <div class="edu-meta">
+            <span class="badge">CGPA 9.02 / 10</span>
+            <span class="badge green">Completed May 2024</span>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">10th SSC</div>
+          <div class="edu-school">MPL High School, Amadalavalasa</div>
+          <div class="edu-meta">
+            <span class="badge">CGPA 7.73 / 10</span>
+            <span class="badge green">Completed Apr 2022</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Project</div>
+        <div class="project-card">
+          <div class="project-title">Path Finder: Career Guidance Application</div>
+          <div class="project-role">Team Lead · UX Designer · Developer — Hackathon 2025</div>
+          <div class="project-desc">
+            <div class="project-line">Led design of a career discovery platform serving students based on their context and background.</div>
+            <div class="project-line">Created UI addressing unemployment challenges through qualification-based job matching.</div>
+            <div class="project-line">Designed interactive prototypes covering 5 education qualification levels.</div>
+            <div class="project-line">Synthesized 100+ government &amp; private sector job opportunities into an accessible, organized format.</div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">UI/UX Design</span>
+            <span class="skill-tag">User Research</span>
+            <span class="skill-tag">Info Architecture</span>
+            <span class="skill-tag">Presentation Design</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Certifications</div>
+        <div class="cert-list">
+          <div class="cert-item"><div class="cert-bullet">PE</div> Pearson Mepro – Level 10 Certificate</div>
+          <div class="cert-item"><div class="cert-bullet">CS</div> CISCO – Basic C Language Certificate</div>
+          <div class="cert-item"><div class="cert-bullet">CS</div> CISCO – Basic Python Certificate</div>
+          <div class="cert-item"><div class="cert-bullet">CR</div> Coursera – Introduction to HTML</div>
+          <div class="cert-item"><div class="cert-bullet">CR</div> Coursera – HTML &amp; CSS: Building a Single-Page Website</div>
+          <div class="cert-item"><div class="cert-bullet">HK</div> ADHOC Hackathon – UI/UX Design Certificate</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sidebar">
+
+      <div class="side-section">
+        <div class="side-label">Technical Skills</div>
+        <div class="tech-row">
+          <div class="tech-category">Programming</div>
+          <div class="tech-pills">
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">HTML</span>
+            <span class="tech-pill">C</span>
+            <span class="tech-pill">Java</span>
+          </div>
+        </div>
+        <div class="tech-row">
+          <div class="tech-category">Database</div>
+          <div class="tech-pills"><span class="tech-pill">SQL</span></div>
+        </div>
+        <div class="tech-row">
+          <div class="tech-category">Tools</div>
+          <div class="tech-pills">
+            <span class="tech-pill">MS Office</span>
+            <span class="tech-pill">VS Code</span>
+            <span class="tech-pill">Python IDLE</span>
+            <span class="tech-pill">Google Colab</span>
+            <span class="tech-pill">Figma</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-section">
+        <div class="side-label">Languages</div>
+        <div class="lang-item"><span class="lang-name">English</span><span class="lang-level">Fluent</span></div>
+        <div class="lang-bar"><div class="lang-fill" style="width:85%"></div></div>
+        <div class="lang-item"><span class="lang-name">Telugu</span><span class="lang-level">Native</span></div>
+        <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+        <div class="lang-item"><span class="lang-name">Hindi</span><span class="lang-level">Average</span></div>
+        <div class="lang-bar"><div class="lang-fill" style="width:50%"></div></div>
+      </div>
+
+      <div class="side-section">
+        <div class="side-label">Soft Skills</div>
+        <div class="soft-item">Clear and open communication with team members</div>
+        <div class="soft-item">Aligning personnel under a single department</div>
+        <div class="soft-item">Collaborative contributor to collective project success</div>
+      </div>
+
+      <div class="side-section">
+        <div class="side-label">Interests</div>
+        <div class="interest-item"><span class="interest-icon">💡</span> Emerging Technologies</div>
+        <div class="interest-item"><span class="interest-icon">🏐</span> Playing Volleyball</div>
+        <div class="interest-item"><span class="interest-icon">🎵</span> Listening to Music</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">yugandharjarugulla2007@gmail.com · Srikakulam, Andhra Pradesh</div>
+
+</div>
+</body>
 </html>
